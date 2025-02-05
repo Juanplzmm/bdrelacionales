@@ -1,2 +1,2 @@
-# bdrelacionales
-Base de datos relacionales
+# Juan Pablo Ochoa Hermosillo 
+4AVP
