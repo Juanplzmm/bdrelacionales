@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2025 a las 01:03:17
+-- Tiempo de generación: 08-03-2025 a las 01:37:29
 -- Versión del servidor: 10.1.39-MariaDB
 -- Versión de PHP: 7.3.5
 
@@ -33,6 +33,20 @@ CREATE TABLE `artisacanciones` (
   `artista_id` int(11) NOT NULL,
   `canciones_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `artisacanciones`
+--
+
+INSERT INTO `artisacanciones` (`id`, `artista_id`, `canciones_id`) VALUES
+(1, 1, 12),
+(2, 1, 8),
+(3, 1, 9),
+(4, 1, 10),
+(5, 2, 2),
+(6, 2, 7),
+(7, 1, 13),
+(8, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -119,6 +133,15 @@ CREATE TABLE `favoritos` (
   `canciones_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `favoritos`
+--
+
+INSERT INTO `favoritos` (`id`, `usuario_id`, `canciones_id`) VALUES
+(1, 5, 20),
+(2, 2, 4),
+(3, 1, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -164,7 +187,8 @@ INSERT INTO `membresias` (`id`, `descripciones`, `precio`) VALUES
 (1, '1 cuenta Premium\r\n\r\nCancela en cualquier momento\r\n\r\nPago por suscripción o pago único', 129),
 (2, '\r\n1 cuenta Premium verificada\r\n\r\nDescuento para estudiantes que cumplen con los requisitos\r\n\r\nCancel', 69),
 (3, '2 cuentas Premium\r\n\r\nCancela en cualquier momento\r\n\r\nPago por suscripción o pago único', 169),
-(4, 'Hasta 6 cuentas Kids o Premium\r\n\r\nControla el contenido marcado como explícito.\r\n\r\nAcceso a Spotify ', 200);
+(4, 'Hasta 6 cuentas Kids o Premium\r\n\r\nControla el contenido marcado como explícito.\r\n\r\nAcceso a Spotify ', 200),
+(5, 'Membresia FREE', 0);
 
 -- --------------------------------------------------------
 
@@ -178,6 +202,18 @@ CREATE TABLE `playliscanciones` (
   `canciones_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `playliscanciones`
+--
+
+INSERT INTO `playliscanciones` (`id`, `playlist_id`, `canciones_id`, `usuario_id`) VALUES
+(1, 2, 13, 5),
+(2, 1, 4, 2),
+(3, 3, 12, 1),
+(4, 1, 7, 2),
+(5, 2, 21, 5),
+(6, 3, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -202,7 +238,8 @@ CREATE TABLE `playlist` (
 INSERT INTO `playlist` (`id`, `nombre`, `usuario_id`, `duración`, `totalcanciones`, `descripcion`, `publico`) VALUES
 (1, 'A', 2, '30:23:00', 28, 'Escuela', 1),
 (2, 'B', 5, '27:54:00', 24, 'Estudiar', 1),
-(3, 'C', 1, '23:45:00', 21, 'Casa', 1);
+(3, 'C', 1, '23:45:00', 21, 'Casa', 1),
+(4, 'Luis Angel Perez Lozano', 4, '00:00:00', 12, 'Trabajo', 1);
 
 -- --------------------------------------------------------
 
@@ -222,9 +259,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `membresia_id`) VALUES
-(1, 'Luis Ángel Pérez lozano', 'luis.peerez23@cetis107.edu.mx', 3),
-(2, 'Víctor Ojeda castro ', 'victor.ojeda23@cetis107.edu.mx', 1),
-(3, 'juan pablo Ochoa', 'juan.ochoa23@cetis107.edu.mx\r\n', 1),
+(1, 'Luis Ángel Pérez lozano', 'luis.peerez23@cetis107.edu.mx', 5),
+(2, 'Víctor Ojeda Castro ', 'victor.ojeda23@cetis107.edu.mx', 1),
+(3, 'Juan Pablo Ochoa', 'juan.ochoa23@cetis107.edu.mx\r\n', 1),
 (4, 'Isaac Chávez moreno ', 'isaac.chavez23@cetis107.edu.mx', 1),
 (5, 'Alejandro tizoc Beltrán ', 'alejandro.tizoc23@cetis107.edu.mx', 2),
 (6, 'mateo Ibarra Gastelum', 'mateo.ibarra23@cetis107.edu.mx', 3),
@@ -308,7 +345,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `artisacanciones`
 --
 ALTER TABLE `artisacanciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `artistas`
@@ -326,7 +363,7 @@ ALTER TABLE `canciones`
 -- AUTO_INCREMENT de la tabla `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`
@@ -338,19 +375,19 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `membresias`
 --
 ALTER TABLE `membresias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `playliscanciones`
 --
 ALTER TABLE `playliscanciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `playlist`
 --
 ALTER TABLE `playlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
